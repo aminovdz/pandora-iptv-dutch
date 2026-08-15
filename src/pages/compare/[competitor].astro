@@ -4,15 +4,6 @@ import StickyHeader from '../../components/StickyHeader.astro';
 import Footer from '../../components/Footer.astro';
 import { Check, X } from 'lucide-astro';
 
-export function getStaticPaths() {
-  return [
-    { params: { competitor: 'ziggo' } },
-    { params: { competitor: 'kpn' } },
-    { params: { competitor: 'netflix' } },
-    { params: { competitor: 'andere-iptv' } }
-  ];
-}
-
 const { competitor } = Astro.params;
 const formattedCompetitor = competitor ? competitor.charAt(0).toUpperCase() + competitor.slice(1).replace('-', ' ') : 'Andere Aanbieders';
 

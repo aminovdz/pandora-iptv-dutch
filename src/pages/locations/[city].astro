@@ -5,16 +5,6 @@ import PricingCard from '../../components/PricingCard.astro';
 import Footer from '../../components/Footer.astro';
 import { MapPin } from 'lucide-astro';
 
-export function getStaticPaths() {
-  return [
-    { params: { city: 'amsterdam' } },
-    { params: { city: 'rotterdam' } },
-    { params: { city: 'den-haag' } },
-    { params: { city: 'utrecht' } },
-    { params: { city: 'eindhoven' } }
-  ];
-}
-
 const { city } = Astro.params;
 const formattedCity = city ? city.charAt(0).toUpperCase() + city.slice(1).replace('-', ' ') : 'Nederland';
 

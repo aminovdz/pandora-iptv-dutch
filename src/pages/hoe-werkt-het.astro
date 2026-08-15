@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import SupportedDevices from '../components/SupportedDevices.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+import { HelpCircle, CheckCircle2, Zap, Tv, ShieldCheck } from 'lucide-astro';
+
+const title = "Hoe Werkt Pandora IPTV? | Eenvoudige Uitleg & Direct Kijken";
+const description = "Ontdek hoe Pandora IPTV werkt in Nederland. Geen schotel of kabel nodig. Binnen 5 minuten geïnstalleerd op je Smart TV, Android, Apple TV of tablet.";
+---
+
+<Layout title={title} description={description}>
+  <StickyHeader />
+  
+  <main class="pt-32 pb-24 relative overflow-hidden">
+    
+    <!-- Ambient Background Glow -->
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-primary/15 blur-[160px] pointer-events-none"></div>
+
+    <div class="container mx-auto px-4 max-w-6xl relative z-10">
+      
+      <!-- Hero Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-black uppercase tracking-wider mb-4">
+          <HelpCircle class="w-3.5 h-3.5" />
+          <span>Alles Wat Je Moet Weten</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6">
+          Hoe Werkt <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-red-400 to-secondary">Pandora IPTV?</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+          Televisie kijken via internet (IPTV) is de moderne vervanger voor dure kabelabonnementen en schotelantennes. Geen kastjes huren, geen monteurs over de vloer. Binnen 5 minuten gereed.
+        </p>
+      </div>
+
+      <!-- 3 Core Advantages Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-xl">
+          <div class="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center mb-6 text-primary">
+            <Zap class="w-7 h-7" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">1. Directe Activatie</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Na je bestelling ontvang je binnen enkele minuten je inloggegevens via WhatsApp. Geen wachttijden of levering via post.
+          </p>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-xl">
+          <div class="w-14 h-14 rounded-2xl bg-secondary/20 flex items-center justify-center mb-6 text-secondary">
+            <Tv class="w-7 h-7" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">2. Werkt op Elk Apparaat</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Installeer een van de populaire streaming apps (zoals IBO Player of IPTV Smarters) op je Samsung, LG, Android of Apple TV.
+          </p>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-xl">
+          <div class="w-14 h-14 rounded-2xl bg-green-500/20 flex items-center justify-center mb-6 text-green-400">
+            <ShieldCheck class="w-7 h-7" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">3. Anti-Freeze Servers</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Onze Nederlandse dataservers zijn speciaal geoptimaliseerd voor 4K sportevenementen zonder haperingen of buffering.
+          </p>
+        </div>
+      </div>
+
+      <!-- Process Steps Component -->
+      <div class="mb-20">
+        <ProcessSteps />
+      </div>
+
+      <!-- Supported Devices Component -->
+      <div class="mb-20">
+        <SupportedDevices />
+      </div>
+
+      <!-- Technical Requirements Box -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-3xl p-8 md:p-12 mb-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Wat Heb Je Nodig Om Te Beginnen?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <CheckCircle2 class="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+              <div>
+                <strong class="text-white text-sm">Internetverbinding (vanaf 15 Mbps):</strong>
+                <p class="text-gray-400 text-xs mt-0.5">Voor HD streams volstaat 15 Mbps. Voor 4K Ultra HD en 60FPS sport adviseren wij 25-30 Mbps.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <CheckCircle2 class="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+              <div>
+                <strong class="text-white text-sm">Een Scherm naar Keuze:</strong>
+                <p class="text-gray-400 text-xs mt-0.5">Smart TV (Samsung/LG), Android TV box, Apple TV, iPhone, iPad, Windows PC of smartphone.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <CheckCircle2 class="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+              <div>
+                <strong class="text-white text-sm">Een IPTV Player App:</strong>
+                <p class="text-gray-400 text-xs mt-0.5">Gratis te downloaden in de officiële app store van jouw televisie (IBO Player, IPTV Smarters Pro, IPTVX).</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <CheckCircle2 class="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+              <div>
+                <strong class="text-white text-sm">Pandora IPTV Abonnement:</strong>
+                <p class="text-gray-400 text-xs mt-0.5">Kies een pakket vanaf €5/maand of het populaire 12-maanden pakket voor €35 inclusief gratis app activatie.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <FAQSection />
+
+      <!-- Bottom CTA Banner -->
+      <div class="mt-20">
+        <CTASection />
+      </div>
+
+    </div>
+  </main>
+  
+  <Footer />
+  <FloatingWhatsApp />
+</Layout>

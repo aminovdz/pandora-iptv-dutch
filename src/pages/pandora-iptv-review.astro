@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import UserReviewsSection from '../components/UserReviewsSection.astro';
+import CTASection from '../components/CTASection.astro';
+import { Star, ShieldCheck } from 'lucide-astro';
+
+const title = "Pandora IPTV Reviews & Ervaringen | 4.9/5 Klantbeoordelingen";
+const description = "Lees eerlijke klantervaringen en reviews over Pandora IPTV in Nederland. Ontdek waarom meer dan 10.000+ Nederlandse kijkers kozen voor onze 4K streams.";
+---
+
+<Layout title={title} description={description}>
+  <StickyHeader />
+  
+  <main class="pt-32 pb-24 relative overflow-hidden">
+    
+    <!-- Ambient Glow -->
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-primary/15 blur-[160px] pointer-events-none"></div>
+
+    <div class="container mx-auto px-4 max-w-6xl relative z-10">
+      
+      <!-- Reviews Hero Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs font-black uppercase tracking-wider mb-4">
+          <Star class="w-3.5 h-3.5 fill-current" />
+          <span>Geverifieerde Klantbeoordelingen</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6">
+          Wat Zeggen Onze <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-red-400 to-secondary">Nederlandse Kijkers?</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+          Kwaliteit, stabiliteit en uitstekende klantenservice staan bij ons voorop. Bekijk de authentieke reviews van gebruikers uit heel Nederland.
+        </p>
+
+        <!-- Trust Score Card -->
+        <div class="mt-8 inline-flex flex-col sm:flex-row items-center gap-6 bg-white/5 border border-white/10 px-8 py-5 rounded-3xl backdrop-blur-xl">
+          <div class="flex items-center gap-3">
+            <span class="text-4xl font-black text-white">4.9</span>
+            <div class="text-left">
+              <div class="flex text-yellow-400 gap-0.5">
+                <Star class="w-4 h-4 fill-current" />
+                <Star class="w-4 h-4 fill-current" />
+                <Star class="w-4 h-4 fill-current" />
+                <Star class="w-4 h-4 fill-current" />
+                <Star class="w-4 h-4 fill-current" />
+              </div>
+              <p class="text-xs text-gray-400 mt-1">Gebaseerd op 1.450+ beoordelingen</p>
+            </div>
+          </div>
+
+          <div class="hidden sm:block h-8 w-px bg-white/10"></div>
+
+          <div class="flex items-center gap-2 text-xs font-semibold text-green-400">
+            <ShieldCheck class="w-5 h-5" />
+            <span>99.8% Uptime & 24H Geld-Terug-Garantie</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rating Breakdown Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-20">
+        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl text-center backdrop-blur-md">
+          <span class="text-3xl font-black text-primary block mb-1">99.4%</span>
+          <h3 class="text-white font-bold text-sm mb-1">Beeldkwaliteit 4K</h3>
+          <p class="text-gray-400 text-xs">Haarscherpe zenders en soepele 60FPS sport.</p>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl text-center backdrop-blur-md">
+          <span class="text-3xl font-black text-secondary block mb-1">&lt; 5 min</span>
+          <h3 class="text-white font-bold text-sm mb-1">Snelle Installatie</h3>
+          <p class="text-gray-400 text-xs">Binnen no-time actief op Smart TV of box.</p>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl text-center backdrop-blur-md">
+          <span class="text-3xl font-black text-green-400 block mb-1">24/7</span>
+          <h3 class="text-white font-bold text-sm mb-1">WhatsApp Hulp</h3>
+          <p class="text-gray-400 text-xs">Persoonlijk contact met echte monteurs.</p>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl text-center backdrop-blur-md">
+          <span class="text-3xl font-black text-yellow-400 block mb-1">100%</span>
+          <h3 class="text-white font-bold text-sm mb-1">Geen Contract</h3>
+          <p class="text-gray-400 text-xs">Volledige vrijheid zonder stilzwijgende verlenging.</p>
+        </div>
+      </div>
+
+      <!-- Detailed User Reviews Section Component -->
+      <div class="mb-20">
+        <UserReviewsSection />
+      </div>
+
+      <!-- CTA Section -->
+      <CTASection />
+
+    </div>
+  </main>
+  
+  <Footer />
+  <FloatingWhatsApp />
+</Layout>

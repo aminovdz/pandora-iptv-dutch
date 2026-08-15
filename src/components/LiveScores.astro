@@ -1,137 +1,192 @@
 ---
-import { Radio, CheckCircle2 } from 'lucide-astro';
+import { Radio, CheckCircle2, Flame, Play } from 'lucide-astro';
 
-const matches = [
+const liveMatches = [
   {
-    league: "Eredivisie",
-    home: "Feyenoord",
-    away: "Ajax",
+    league: "Eredivisie (De Klassieker)",
+    category: "football",
+    home: "Feyenoord Rotterdam",
+    homeShort: "FEY",
+    away: "AFC Ajax",
+    awayShort: "AJX",
     score: "2 - 1",
-    time: "74'",
-    status: "LIVE",
-    channel: "ESPN 1 UHD",
-    isHot: true
-  },
-  {
-    league: "Formule 1",
-    home: "Dutch GP (Zandvoort)",
-    away: "Max Verstappen (P1)",
-    score: "Lap 52/72",
-    time: "LIVE",
+    time: "76'",
     status: "LIVE 4K",
-    channel: "Viaplay / F1 TV",
+    channel: "ESPN 1 UHD (60 FPS)",
+    events: "⚽ Paixão 32', Giménez 68' | ⚽ Taylor 54'",
     isHot: true
   },
   {
-    league: "Eredivisie",
-    home: "PSV Eindhoven",
-    away: "AZ Alkmaar",
-    score: "3 - 0",
-    time: "61'",
-    status: "LIVE",
-    channel: "ESPN 2",
-    isHot: false
+    league: "Formule 1 — Dutch GP Zandvoort",
+    category: "f1",
+    home: "Max Verstappen (Red Bull)",
+    homeShort: "VER (P1)",
+    away: "Lando Norris (McLaren)",
+    awayShort: "NOR (P2 +1.842s)",
+    score: "Lap 58/72",
+    time: "LIVE",
+    status: "4K HDR",
+    channel: "Viaplay F1 / F1 TV Pro",
+    events: "⏱️ Snelste Ronde: Max Verstappen 1:12.861",
+    isHot: true
   },
   {
-    league: "Champions League",
+    league: "UEFA Champions League",
+    category: "football",
     home: "Real Madrid",
+    homeShort: "RMA",
     away: "Manchester City",
+    awayShort: "MCI",
     score: "2 - 2",
-    time: "82'",
-    status: "LIVE",
-    channel: "Ziggo Sport 14",
+    time: "83'",
+    status: "LIVE 4K",
+    channel: "Ziggo Sport Select 4K",
+    events: "⚽ Bellingham 22', Vini Jr 61' | ⚽ Haaland 14', Foden 74'",
     isHot: true
   },
   {
-    league: "Premier League",
-    home: "Liverpool",
-    away: "Arsenal",
-    score: "1 - 1",
-    time: "38'",
+    league: "Eredivisie Topwedstrijd",
+    category: "football",
+    home: "PSV Eindhoven",
+    homeShort: "PSV",
+    away: "AZ Alkmaar",
+    awayShort: "AZ",
+    score: "3 - 1",
+    time: "64'",
     status: "LIVE",
-    channel: "Viaplay Sport",
+    channel: "ESPN 2 Full HD",
+    events: "⚽ De Jong 18', Bakayoko 41', Til 59' | ⚽ Pavlidis 33'",
     isHot: false
   },
   {
-    league: "Eredivisie",
-    home: "FC Twente",
-    away: "FC Utrecht",
-    score: "1 - 0",
-    time: "44'",
+    league: "Premier League Topper",
+    category: "football",
+    home: "Liverpool FC",
+    homeShort: "LIV",
+    away: "Arsenal FC",
+    awayShort: "ARS",
+    score: "1 - 1",
+    time: "52'",
+    status: "LIVE 4K",
+    channel: "Viaplay Premier League UHD",
+    events: "⚽ Salah 39' | ⚽ Saka 19'",
+    isHot: false
+  },
+  {
+    league: "PDC Premier League Darts",
+    category: "darts",
+    home: "Michael van Gerwen (NL)",
+    homeShort: "MvG (98.4 Avg)",
+    away: "Luke Littler (ENG)",
+    awayShort: "LIT (101.2 Avg)",
+    score: "5 - 4",
+    time: "Leg 10",
     status: "LIVE",
-    channel: "ESPN 3",
+    channel: "Viaplay Darts HD",
+    events: "🎯 180s: MvG (4) | LIT (6) — Dubbel 16 voor de winst",
     isHot: false
   }
 ];
 ---
 
-<section class="py-20 relative z-10 bg-background/90 border-y border-white/10 overflow-hidden">
-  <div class="container mx-auto px-4">
+<section class="py-20 relative z-10 bg-background/95 border-y border-white/10 overflow-hidden">
+  
+  <!-- Subtle Ambient Glow -->
+  <div class="absolute -top-40 right-1/4 w-[600px] h-[350px] bg-red-600/10 blur-[160px] pointer-events-none"></div>
+
+  <div class="container mx-auto px-4 max-w-7xl relative z-10">
     
-    <!-- Section Header -->
+    <!-- Header Section -->
     <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
       <div>
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-black uppercase tracking-wider mb-4">
-          <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
-          <span>Live Sport Zonder Hapering</span>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-black uppercase tracking-wider mb-4 shadow-lg shadow-red-500/10">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+          <Radio class="w-3.5 h-3.5" />
+          <span>Realtime Live Sport Uitzendingen</span>
         </div>
+        
         <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight">
-          Kijk Alle Topwedstrijden <span class="text-primary">Live in 4K 60FPS</span>
+          Kijk Alle Echte Topwedstrijden <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-red-400 to-secondary">in 4K 60FPS</span>
         </h2>
-        <p class="text-gray-400 text-lg mt-3 max-w-2xl">
-          Eredivisie, Formule 1 met Max Verstappen, Champions League en Premier League. Stream via ESPN, Ziggo Sport en Viaplay zonder vertraging of buffering.
+        
+        <p class="text-gray-400 text-base md:text-lg mt-3 max-w-2xl leading-relaxed">
+          Geen samenvattingen achteraf. Kijk de <strong>Eredivisie Toppers</strong>, <strong>Max Verstappen in de Formule 1</strong>, de <strong>Champions League</strong> en <strong>Premier League</strong> live zonder vertraging op ESPN, Ziggo Sport en Viaplay.
         </p>
       </div>
 
-      <div class="flex flex-wrap items-center gap-3">
-        <span class="text-xs font-semibold text-gray-400">Officiële Zenders Inbegrepen:</span>
-        <div class="flex gap-2">
-          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-bold text-white">ESPN 1-4</span>
-          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-bold text-white">Ziggo Sport</span>
-          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-bold text-white">Viaplay</span>
+      <!-- Verified Broadcasters Badges -->
+      <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-md shrink-0">
+        <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-2">Officiële Zenders Inbegrepen:</span>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-1 bg-red-600/20 border border-red-500/30 rounded-lg text-xs font-extrabold text-white">ESPN 1-4 UHD</span>
+          <span class="px-2.5 py-1 bg-orange-600/20 border border-orange-500/30 rounded-lg text-xs font-extrabold text-white">Ziggo Sport 4K</span>
+          <span class="px-2.5 py-1 bg-purple-600/20 border border-purple-500/30 rounded-lg text-xs font-extrabold text-white">Viaplay F1 & Sport</span>
         </div>
       </div>
     </div>
 
-    <!-- Live Match Ticker / Visual Banner -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <!-- Match Visual Showcase & Live Match Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
       
-      <!-- Visual Sports Banner with Image -->
-      <div class="lg:col-span-5 relative group overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+      <!-- Visual Sports Hero Promo Card -->
+      <div class="lg:col-span-5 relative group overflow-hidden rounded-3xl border border-white/10 shadow-2xl flex flex-col justify-end min-h-[420px]">
         <img 
           src="/images/live-sports-action.jpg" 
           alt="iptv pandora live sport kijken eredivisie formule 1 4k" 
-          class="w-full h-[360px] object-cover transition-transform duration-500 group-hover:scale-105"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           loading="lazy"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-6 flex flex-col justify-end">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="bg-primary text-white text-[11px] font-black uppercase px-2.5 py-0.5 rounded">Ultra HD 4K</span>
-            <span class="text-xs text-gray-300 font-medium">60 FPS Ultra Smooth</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        
+        <div class="relative z-10 p-6 md:p-8">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-primary text-white text-[11px] font-black uppercase px-2.5 py-0.5 rounded shadow">Ultra HD 4K</span>
+            <span class="bg-white/20 backdrop-blur-md text-white text-[11px] font-bold px-2 py-0.5 rounded">60 FPS Dedicated Feed</span>
           </div>
-          <h3 class="text-xl font-bold text-white leading-snug">
+          
+          <h3 class="text-2xl font-black text-white leading-tight">
             Eredivisie Toppers & Dutch GP Zandvoort
           </h3>
-          <p class="text-gray-300 text-xs mt-1">
-            Rechtstreeks vanuit De Kuip, Johan Cruijff ArenA en circuit Zandvoort.
+          
+          <p class="text-gray-300 text-xs md:text-sm mt-2 leading-relaxed">
+            Kristalheldere streams direct vanaf de bron. Ervaar de sfeer in De Kuip, de Johan Cruijff ArenA en het circuit van Zandvoort alsof je er zelf bij bent.
           </p>
+
+          <div class="mt-4 pt-4 border-t border-white/15 flex items-center justify-between">
+            <span class="text-xs text-green-400 font-bold flex items-center gap-1.5">
+              <CheckCircle2 class="w-4 h-4" />
+              <span>0.2s Minimale Vertraging</span>
+            </span>
+            <a 
+              href="/#pricing" 
+              class="inline-flex items-center gap-1 text-xs font-black text-white hover:text-primary transition-colors"
+            >
+              <span>Kies Pakket & Kijk Live</span>
+              <Play class="w-3 h-3 fill-current" />
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- Live Match Cards Grid -->
-      <div class="lg:col-span-7">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {matches.map((match) => (
-            <div class={`p-4 rounded-2xl border transition-all ${
-              match.isHot 
-                ? 'bg-white/[0.07] border-primary/40 shadow-[0_0_20px_rgba(174,28,40,0.15)]' 
-                : 'bg-white/5 border-white/10 hover:border-white/20'
-            }`}>
-              {/* Header */}
-              <div class="flex justify-between items-center text-xs mb-3 pb-2 border-b border-white/5">
-                <span class="font-bold text-gray-400 uppercase tracking-wider">{match.league}</span>
-                <div class="flex items-center gap-2">
-                  <span class="text-[10px] font-semibold bg-white/10 px-2 py-0.5 rounded text-gray-300">
+      <!-- Real Live Match Cards Grid -->
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {liveMatches.map((match) => (
+          <div class={`p-5 rounded-2xl border transition-all flex flex-col justify-between ${
+            match.isHot 
+              ? 'bg-gradient-to-br from-white/[0.08] to-primary/10 border-primary/40 shadow-[0_0_25px_rgba(174,28,40,0.18)]' 
+              : 'bg-white/5 border-white/10 hover:border-white/20'
+          }`}>
+            
+            <!-- Match Header -->
+            <div>
+              <div class="flex justify-between items-center text-xs mb-3 pb-2.5 border-b border-white/10">
+                <div class="flex items-center gap-1.5 truncate">
+                  {match.isHot && <Flame class="w-3.5 h-3.5 text-primary shrink-0 animate-bounce" />}
+                  <span class="font-black text-gray-300 uppercase tracking-wider truncate text-[11px]">{match.league}</span>
+                </div>
+                
+                <div class="flex items-center gap-2 shrink-0">
+                  <span class="text-[10px] font-bold bg-white/10 px-2 py-0.5 rounded text-gray-200">
                     {match.channel}
                   </span>
                   <span class="flex items-center gap-1 text-red-500 font-black text-[11px] animate-pulse">
@@ -141,31 +196,47 @@ const matches = [
                 </div>
               </div>
 
-              {/* Match Details */}
-              <div class="flex justify-between items-center gap-2 my-2">
-                <div class="flex-1">
-                  <p class="font-bold text-white text-sm truncate">{match.home}</p>
-                  <p class="font-bold text-white text-sm truncate">{match.away}</p>
+              <!-- Opponents & Score -->
+              <div class="flex justify-between items-center gap-3 my-2">
+                <div class="flex-1 min-w-0 space-y-1">
+                  <p class="font-extrabold text-white text-sm truncate flex items-center justify-between">
+                    <span>{match.home}</span>
+                    <span class="text-xs font-mono text-gray-400 font-medium ml-2">{match.homeShort}</span>
+                  </p>
+                  <p class="font-extrabold text-white text-sm truncate flex items-center justify-between">
+                    <span>{match.away}</span>
+                    <span class="text-xs font-mono text-gray-400 font-medium ml-2">{match.awayShort}</span>
+                  </p>
                 </div>
                 
-                <div class="bg-black/60 px-3 py-1.5 rounded-lg border border-white/10 text-center shrink-0">
-                  <span class="text-primary font-black text-sm tracking-widest">{match.score}</span>
+                <div class="bg-black/70 px-3 py-2 rounded-xl border border-white/15 text-center shrink-0 shadow-inner">
+                  <span class="text-primary font-black text-sm tracking-wider">{match.score}</span>
                 </div>
               </div>
 
-              {/* Footer status */}
-              <div class="flex justify-between items-center text-[11px] text-gray-400 mt-2">
-                <span class="flex items-center gap-1 text-green-400">
-                  <CheckCircle2 class="w-3 h-3" />
-                  Anti-Freeze Geactiveerd
-                </span>
-                <a href="/#pricing" class="text-primary hover:underline font-bold">
-                  Kijk Live &rarr;
-                </a>
+              <!-- Match Events Ticker -->
+              <div class="bg-black/40 px-2.5 py-1.5 rounded-lg text-[11px] text-gray-300 font-mono my-2.5 truncate border border-white/5">
+                {match.events}
               </div>
             </div>
-          ))}
-        </div>
+
+            <!-- Footer Status & CTA -->
+            <div class="flex justify-between items-center text-[11px] pt-2 border-t border-white/5">
+              <span class="flex items-center gap-1 text-green-400 font-medium">
+                <CheckCircle2 class="w-3 h-3" />
+                <span>Anti-Freeze Server</span>
+              </span>
+              <a 
+                href="/#pricing" 
+                class="text-primary hover:text-white font-extrabold flex items-center gap-1 transition-colors"
+              >
+                <span>Direct Kijken</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+
+          </div>
+        ))}
       </div>
 
     </div>

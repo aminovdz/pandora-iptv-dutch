@@ -6,21 +6,18 @@ import Footer from '../../components/Footer.astro';
 import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
 import { Calendar, Clock, ChevronRight, ShieldCheck, MessageCircle, BookOpen, Gift, CheckCircle2, ArrowRight, Tv } from 'lucide-astro';
 
-export async function getStaticPaths() {
-  const guides = await getCollection('guides');
-  return guides.map(guide => ({
-    params: { slug: guide.slug },
-  }));
+// SSR Dynamic routing
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect('/404');
 }
 
-const { slug } = Astro.params;
-const entry = await getEntry('guides', slug!);
+const entry = await getEntry('guides', slug);
 
 if (!entry) {
   return Astro.redirect('/404');
 }
-
-
 
 const allGuides = await getCollection('guides');
 const otherGuides = allGuides.filter((g: any) => g.slug !== slug);
