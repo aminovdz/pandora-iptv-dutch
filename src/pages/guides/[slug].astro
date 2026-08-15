@@ -8,14 +8,14 @@ import { Calendar, Clock, ChevronRight, ShieldCheck, MessageCircle, BookOpen, Gi
 
 export async function getStaticPaths() {
   const guides = await getCollection('guides');
-  return guides.map(entry => ({
+  return guides.map((entry: any) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
 }
 
 const { slug } = Astro.params;
-const { entry } = Astro.props;
+const { entry } = Astro.props as any;
 
 if (!entry) {
   return Astro.redirect('/404');
