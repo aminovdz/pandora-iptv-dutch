@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="pandora-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#AE1C28" />
+      <stop offset="50%" stop-color="#E11D48" />
+      <stop offset="100%" stop-color="#21468B" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Rounded Background Container -->
+  <rect width="512" height="512" rx="128" fill="#0B0B12" />
+  <rect width="500" height="500" x="6" y="6" rx="122" stroke="url(#pandora-grad)" stroke-width="8" opacity="0.5" />
+  
+  <!-- Stylized Pandora 'P' Streaming Icon -->
+  <path d="M150 120 C150 105 165 95 180 95 L310 95 C375 95 420 140 420 205 C420 270 375 315 310 315 L230 315 L230 405 C230 415 220 425 210 425 L170 425 C160 425 150 415 150 405 Z" fill="url(#pandora-grad)" />
+  
+  <!-- Play Triangle Cutout in White -->
+  <path d="M230 165 L325 220 L230 275 Z" fill="#FFFFFF" filter="url(#glow)" />
+</svg>

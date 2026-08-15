@@ -1,0 +1,69 @@
+---
+import { MessageCircle, Send, X } from 'lucide-astro';
+---
+
+<div id="groups-popup" class="fixed bottom-6 left-6 z-40 bg-background/95 backdrop-blur-xl border border-white/10 p-5 rounded-2xl shadow-2xl max-w-sm hidden sm:block transform translate-y-8 opacity-0 transition-all duration-500">
+  <div class="flex justify-between items-start mb-3">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+      <h4 class="text-white font-bold text-sm">Blijf Altijd op de Hoogte</h4>
+    </div>
+    <button id="close-groups" class="text-gray-400 hover:text-white bg-white/5 rounded-full p-1 transition-colors" aria-label="Sluiten">
+      <X class="w-4 h-4" />
+    </button>
+  </div>
+  <p class="text-xs text-gray-400 mb-4 leading-relaxed">
+    Word lid van ons officiële kanaal voor directe server status updates en acties.
+  </p>
+  <div class="space-y-2">
+    <a href="https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 w-full p-2.5 bg-white/5 hover:bg-[#25D366]/20 border border-white/5 hover:border-[#25D366]/50 rounded-xl transition-colors group">
+      <MessageCircle class="w-5 h-5 text-[#25D366]" />
+      <span class="text-sm font-medium text-gray-200 group-hover:text-white">Volg WhatsApp Kanaal</span>
+    </a>
+    <a href="https://t.me/castvera_com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 w-full p-2.5 bg-white/5 hover:bg-[#0088cc]/20 border border-white/5 hover:border-[#0088cc]/50 rounded-xl transition-colors group">
+      <Send class="w-5 h-5 text-[#0088cc]" />
+      <span class="text-sm font-medium text-gray-200 group-hover:text-white">Naar Telegram Kanaal</span>
+    </a>
+  </div>
+</div>
+
+<script>
+  const GROUPS_STORAGE_KEY = 'pandora_groups_popup_24h';
+  const COOLDOWN_24H = 24 * 60 * 60 * 1000;
+
+  function shouldShowGroupsPopup() {
+    try {
+      const lastClosed = localStorage.getItem(GROUPS_STORAGE_KEY);
+      if (!lastClosed) return true;
+      const timePassed = Date.now() - parseInt(lastClosed, 10);
+      return timePassed > COOLDOWN_24H;
+    } catch {
+      return true;
+    }
+  }
+
+  function markGroupsPopupClosed() {
+    try {
+      localStorage.setItem(GROUPS_STORAGE_KEY, Date.now().toString());
+    } catch {}
+  }
+
+  const popup = document.getElementById('groups-popup');
+  const closeBtn = document.getElementById('close-groups');
+
+  if (popup && closeBtn && shouldShowGroupsPopup()) {
+    setTimeout(() => {
+      popup.classList.remove('translate-y-8', 'opacity-0');
+    }, 4000);
+
+    closeBtn.addEventListener('click', () => {
+      popup.classList.add('translate-y-8', 'opacity-0');
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 500);
+      markGroupsPopupClosed();
+    });
+  } else if (popup) {
+    popup.style.display = 'none';
+  }
+</script>

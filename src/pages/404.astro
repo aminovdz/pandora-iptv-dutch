@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import { Home, Tv2, Radio, MessageCircle, ArrowRight } from 'lucide-astro';
+---
+
+<Layout title="404: Geen Signaal | Pandora IPTV Nederland" description="De opgevraagde pagina is niet beschikbaar op onze streams. Keer terug naar het hoofdmenu van Pandora IPTV.">
+  <StickyHeader />
+  
+  <main class="pt-36 pb-24 flex-grow flex items-center justify-center min-h-[75vh] relative overflow-hidden">
+    
+    <!-- Background Ambient Glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/15 blur-[150px] rounded-full pointer-events-none"></div>
+
+    <div class="container mx-auto px-4 text-center max-w-2xl relative z-10">
+      
+      <!-- TV / Streaming Radar Icon with Signal Loss Visual -->
+      <div class="relative inline-flex items-center justify-center w-28 h-28 rounded-3xl bg-white/5 border border-white/10 mb-8 backdrop-blur-xl shadow-2xl">
+        <div class="absolute inset-0 bg-primary/20 rounded-3xl animate-ping opacity-25"></div>
+        <Tv2 class="w-12 h-12 text-primary" />
+        <span class="absolute -top-2 -right-2 px-2.5 py-0.5 rounded-full bg-red-500 text-[10px] font-black text-white uppercase tracking-wider animate-pulse flex items-center gap-1">
+          <Radio class="w-2.5 h-2.5" />
+          Geen Signaal
+        </span>
+      </div>
+      
+      <!-- Error Code Display -->
+      <div class="mb-4">
+        <span class="text-sm font-mono font-bold text-primary tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-md border border-primary/20">
+          FOUTCODE: 404_STREAM_NOT_FOUND
+        </span>
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-black text-white tracking-tight mb-4">
+        Kanaal Niet Gevonden
+      </h1>
+      
+      <p class="text-gray-300 text-base md:text-lg mb-8 leading-relaxed">
+        De pagina of zender die je zoekt is verplaatst of bestaat niet meer. Geen zorgen, al onze andere streams en functies zijn live en online.
+      </p>
+
+      <!-- Quick Navigation Buttons -->
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10">
+        <a href="/" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 text-base font-extrabold text-white bg-primary hover:bg-primary/90 rounded-xl shadow-[0_0_30px_rgba(174,28,40,0.3)] hover:scale-105 transition-all">
+          <Home class="w-5 h-5" />
+          <span>Terug naar Hoofdmenu</span>
+        </a>
+        
+        <a href="/#pricing" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 text-base font-bold text-white bg-white/5 hover:bg-white/10 border border-white/15 rounded-xl transition-all">
+          <span>Bekijk Pakketten</span>
+          <ArrowRight class="w-4 h-4" />
+        </a>
+      </div>
+
+      <!-- Support Fallback -->
+      <div class="pt-6 border-t border-white/10 flex flex-wrap justify-center items-center gap-6 text-sm text-gray-400">
+        <a href="https://wa.me/18036582620" class="hover:text-green-400 flex items-center gap-1.5 transition-colors">
+          <MessageCircle class="w-4 h-4 text-green-400" />
+          <span>WhatsApp Support (24/7)</span>
+        </a>
+        <span class="text-gray-600">•</span>
+        <a href="/guides" class="hover:text-white transition-colors">
+          <span>Installatie Gidsen</span>
+        </a>
+        <span class="text-gray-600">•</span>
+        <a href="/contact" class="hover:text-white transition-colors">
+          <span>Contact Pagina</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

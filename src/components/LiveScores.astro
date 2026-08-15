@@ -1,0 +1,174 @@
+---
+import { Radio, CheckCircle2 } from 'lucide-astro';
+
+const matches = [
+  {
+    league: "Eredivisie",
+    home: "Feyenoord",
+    away: "Ajax",
+    score: "2 - 1",
+    time: "74'",
+    status: "LIVE",
+    channel: "ESPN 1 UHD",
+    isHot: true
+  },
+  {
+    league: "Formule 1",
+    home: "Dutch GP (Zandvoort)",
+    away: "Max Verstappen (P1)",
+    score: "Lap 52/72",
+    time: "LIVE",
+    status: "LIVE 4K",
+    channel: "Viaplay / F1 TV",
+    isHot: true
+  },
+  {
+    league: "Eredivisie",
+    home: "PSV Eindhoven",
+    away: "AZ Alkmaar",
+    score: "3 - 0",
+    time: "61'",
+    status: "LIVE",
+    channel: "ESPN 2",
+    isHot: false
+  },
+  {
+    league: "Champions League",
+    home: "Real Madrid",
+    away: "Manchester City",
+    score: "2 - 2",
+    time: "82'",
+    status: "LIVE",
+    channel: "Ziggo Sport 14",
+    isHot: true
+  },
+  {
+    league: "Premier League",
+    home: "Liverpool",
+    away: "Arsenal",
+    score: "1 - 1",
+    time: "38'",
+    status: "LIVE",
+    channel: "Viaplay Sport",
+    isHot: false
+  },
+  {
+    league: "Eredivisie",
+    home: "FC Twente",
+    away: "FC Utrecht",
+    score: "1 - 0",
+    time: "44'",
+    status: "LIVE",
+    channel: "ESPN 3",
+    isHot: false
+  }
+];
+---
+
+<section class="py-20 relative z-10 bg-background/90 border-y border-white/10 overflow-hidden">
+  <div class="container mx-auto px-4">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-black uppercase tracking-wider mb-4">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+          <span>Live Sport Zonder Hapering</span>
+        </div>
+        <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight">
+          Kijk Alle Topwedstrijden <span class="text-primary">Live in 4K 60FPS</span>
+        </h2>
+        <p class="text-gray-400 text-lg mt-3 max-w-2xl">
+          Eredivisie, Formule 1 met Max Verstappen, Champions League en Premier League. Stream via ESPN, Ziggo Sport en Viaplay zonder vertraging of buffering.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="text-xs font-semibold text-gray-400">Officiële Zenders Inbegrepen:</span>
+        <div class="flex gap-2">
+          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-bold text-white">ESPN 1-4</span>
+          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-bold text-white">Ziggo Sport</span>
+          <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-bold text-white">Viaplay</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Match Ticker / Visual Banner -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      
+      <!-- Visual Sports Banner with Image -->
+      <div class="lg:col-span-5 relative group overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+        <img 
+          src="/images/live-sports-action.jpg" 
+          alt="iptv pandora live sport kijken eredivisie formule 1 4k" 
+          class="w-full h-[360px] object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-6 flex flex-col justify-end">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="bg-primary text-white text-[11px] font-black uppercase px-2.5 py-0.5 rounded">Ultra HD 4K</span>
+            <span class="text-xs text-gray-300 font-medium">60 FPS Ultra Smooth</span>
+          </div>
+          <h3 class="text-xl font-bold text-white leading-snug">
+            Eredivisie Toppers & Dutch GP Zandvoort
+          </h3>
+          <p class="text-gray-300 text-xs mt-1">
+            Rechtstreeks vanuit De Kuip, Johan Cruijff ArenA en circuit Zandvoort.
+          </p>
+        </div>
+      </div>
+
+      <!-- Live Match Cards Grid -->
+      <div class="lg:col-span-7">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {matches.map((match) => (
+            <div class={`p-4 rounded-2xl border transition-all ${
+              match.isHot 
+                ? 'bg-white/[0.07] border-primary/40 shadow-[0_0_20px_rgba(174,28,40,0.15)]' 
+                : 'bg-white/5 border-white/10 hover:border-white/20'
+            }`}>
+              {/* Header */}
+              <div class="flex justify-between items-center text-xs mb-3 pb-2 border-b border-white/5">
+                <span class="font-bold text-gray-400 uppercase tracking-wider">{match.league}</span>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] font-semibold bg-white/10 px-2 py-0.5 rounded text-gray-300">
+                    {match.channel}
+                  </span>
+                  <span class="flex items-center gap-1 text-red-500 font-black text-[11px] animate-pulse">
+                    <Radio class="w-3 h-3" />
+                    {match.time}
+                  </span>
+                </div>
+              </div>
+
+              {/* Match Details */}
+              <div class="flex justify-between items-center gap-2 my-2">
+                <div class="flex-1">
+                  <p class="font-bold text-white text-sm truncate">{match.home}</p>
+                  <p class="font-bold text-white text-sm truncate">{match.away}</p>
+                </div>
+                
+                <div class="bg-black/60 px-3 py-1.5 rounded-lg border border-white/10 text-center shrink-0">
+                  <span class="text-primary font-black text-sm tracking-widest">{match.score}</span>
+                </div>
+              </div>
+
+              {/* Footer status */}
+              <div class="flex justify-between items-center text-[11px] text-gray-400 mt-2">
+                <span class="flex items-center gap-1 text-green-400">
+                  <CheckCircle2 class="w-3 h-3" />
+                  Anti-Freeze Geactiveerd
+                </span>
+                <a href="/#pricing" class="text-primary hover:underline font-bold">
+                  Kijk Live &rarr;
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

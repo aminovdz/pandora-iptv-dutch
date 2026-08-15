@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Hero from '../components/Hero.astro';
+import LiveScores from '../components/LiveScores.astro';
+import PricingCard from '../components/PricingCard.astro';
+import ReferralSection from '../components/ReferralSection.astro';
+import SupportedDevices from '../components/SupportedDevices.astro';
+import UserReviewsSection from '../components/UserReviewsSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import ExitPopup from '../components/ExitPopup.astro';
+import { PlayCircle, Film, Tv } from 'lucide-astro';
+
+// SEO details - Optimized for Sport & Movies angle
+const title = "Live Sport & Films | Pandora IPTV Nederland | Zonder Haperingen";
+const description = "Kijk Eredivisie, Formule 1 en de nieuwste films. Pandora IPTV biedt de meest stabiele streams van Nederland in 4K. Probeer het vandaag.";
+---
+
+<Layout title={title} description={description}>
+  <StickyHeader />
+  
+  <main>
+    <Hero />
+    
+    <!-- Sport & VOD Focus Section -->
+    <section class="py-24 bg-background/50 relative z-10">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Jouw Favoriete Content, <span class="text-primary">Altijd Beschikbaar</span></h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">Het complete aanbod aan premium zenders, live sport en on-demand films en series in 4K.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div class="bg-white/5 border border-white/10 p-8 rounded-3xl text-center hover:bg-white/10 transition-colors">
+            <div class="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <PlayCircle class="w-8 h-8 text-primary" />
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">Live Sport</h3>
+            <p class="text-gray-400">Alle premium sportkanalen, Eredivisie, F1, en Champions League in 60fps voor de perfecte wedstrijdervaring.</p>
+          </div>
+
+          <div class="bg-white/5 border border-white/10 p-8 rounded-3xl text-center hover:bg-white/10 transition-colors">
+            <div class="bg-[#0088cc]/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Film class="w-8 h-8 text-[#0088cc]" />
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">Films & Series</h3>
+            <p class="text-gray-400">De nieuwste bioscoopfilms en complete seizoenen van populaire series met wekelijkse updates in de bibliotheek.</p>
+          </div>
+
+          <div class="bg-white/5 border border-white/10 p-8 rounded-3xl text-center hover:bg-white/10 transition-colors">
+            <div class="bg-[#25D366]/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Tv class="w-8 h-8 text-[#25D366]" />
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">4K Kwaliteit</h3>
+            <p class="text-gray-400">Ervaar haarscherp beeld. Onze krachtige servers zorgen voor streams zonder buffering, zelfs tijdens drukke uren.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section (Positioned Directly Above Referral) -->
+    <section id="pricing" class="py-24 relative z-10 bg-background/80">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Transparante Prijzen</h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">Kies het abonnement dat bij jou past en start direct met kijken.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto items-stretch">
+          <PricingCard months="12" price="35" popular={true} hasBonus={true} />
+          <PricingCard months="6" price="20" popular={false} />
+          <PricingCard months="3" price="10" popular={false} />
+          <PricingCard months="1" price="5" popular={false} />
+        </div>
+      </div>
+    </section>
+
+    <!-- Referral Section Directly Under Pricing -->
+    <ReferralSection />
+
+    <LiveScores />
+    <SupportedDevices />
+    <UserReviewsSection />
+    <CTASection />
+  </main>
+  
+  <Footer />
+  <FloatingWhatsApp />
+  <ExitPopup />
+</Layout>

@@ -1,0 +1,55 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+}
+
+const { title, description, image = '/og-image.webp' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Pandora IPTV",
+  "url": "https://pandoraiptv-nl.com",
+  "logo": "https://pandoraiptv-nl.com/logo.webp",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+18036582620",
+    "contactType": "customer support",
+    "email": "support@castvera.com"
+  }
+};
+---
+
+<!doctype html>
+<html lang="nl">
+	<head>
+		<BaseHead title={title} description={description} image={image} />
+		<link rel="canonical" href={canonicalURL} />
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+	</head>
+	<body class="bg-background text-white antialiased selection:bg-primary selection:text-white">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+  @import "tailwindcss";
+  
+  @theme {
+    --color-primary: #AE1C28; /* Netherlands Red */
+    --color-secondary: #21468B; /* Netherlands Blue */
+    --color-background: #0a0a0f;
+    --color-surface: rgba(255, 255, 255, 0.05);
+    --color-border: rgba(255, 255, 255, 0.1);
+  }
+
+  :root {
+    --bg-color: #0a0a0f;
+    --text-main: #f0f0f0;
+  }
+</style>

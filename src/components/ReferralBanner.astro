@@ -1,0 +1,56 @@
+---
+import { Gift, ArrowRight, MessageCircle } from 'lucide-astro';
+
+const referralShareText = encodeURIComponent(
+  "Check Pandora IPTV Nederland! Haarscherpe 4K streams zonder hapering. Bestel via deze link en we krijgen allebei 1 maand gratis: https://pandoraiptv-nl.com/referral"
+);
+const shareWhatsappUrl = `https://wa.me/?text=${referralShareText}`;
+---
+
+<div class="relative z-20 container mx-auto px-4 -mt-8 mb-12">
+  <div class="bg-gradient-to-r from-primary via-[#b91c2b] to-secondary rounded-2xl p-4 md:p-6 shadow-2xl shadow-primary/25 border border-white/20 relative overflow-hidden">
+    
+    <!-- Background overlay shimmer -->
+    <div class="absolute inset-0 bg-white/5 backdrop-blur-[2px]"></div>
+
+    <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
+      
+      <!-- Left Info -->
+      <div class="flex items-center gap-4 text-center md:text-left">
+        <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0 hidden sm:flex shadow-inner">
+          <Gift class="w-6 h-6" />
+        </div>
+        <div>
+          <div class="flex items-center justify-center md:justify-start gap-2">
+            <span class="bg-white text-primary text-[10px] font-black uppercase px-2 py-0.5 rounded-full">Referral Bonus</span>
+            <span class="text-white font-extrabold text-sm md:text-base">Kijk Gratis met Vrienden!</span>
+          </div>
+          <p class="text-white/90 text-xs md:text-sm mt-0.5">
+            Nodig een vriend uit voor Pandora IPTV en jullie ontvangen beiden <strong class="text-white underline">1 maand gratis</strong> kijktijd.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right CTAs -->
+      <div class="flex items-center gap-3 shrink-0 w-full sm:w-auto justify-center">
+        <a 
+          href={shareWhatsappUrl} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="px-4 py-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs md:text-sm font-bold rounded-xl shadow-lg transition-all flex items-center gap-1.5"
+        >
+          <MessageCircle class="w-4 h-4" />
+          <span>Deel Code</span>
+        </a>
+        <a 
+          href="/referral" 
+          class="px-4 py-2.5 bg-white text-gray-900 hover:bg-gray-100 text-xs md:text-sm font-bold rounded-xl shadow-lg transition-all flex items-center gap-1.5"
+        >
+          <span>Hoe Werkt Het?</span>
+          <ArrowRight class="w-4 h-4" />
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>

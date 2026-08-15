@@ -1,0 +1,104 @@
+---
+import { X, Gift, Sparkles, MessageCircle } from 'lucide-astro';
+---
+
+<div id="exit-intent-popup" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+  <div class="absolute inset-0 bg-black/75 backdrop-blur-md" id="exit-overlay"></div>
+  
+  <div class="relative bg-[#111118] border border-white/15 p-8 md:p-10 rounded-3xl max-w-lg w-[90%] shadow-[0_0_50px_rgba(174,28,40,0.3)] z-10 transform scale-95 transition-transform duration-300" id="exit-modal">
+    <button id="close-exit" class="absolute top-4 right-4 text-gray-400 hover:text-white bg-white/5 rounded-full p-2.5 transition-colors" aria-label="Sluiten">
+      <X class="w-5 h-5" />
+    </button>
+    
+    <div class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/30">
+      <Gift class="w-8 h-8 text-white" />
+    </div>
+    
+    <div class="inline-flex items-center gap-1.5 bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 text-xs font-bold px-3 py-1 rounded-full mb-3 mx-auto flex justify-center w-fit">
+      <Sparkles class="w-3.5 h-3.5" />
+      <span>Exclusieve Welkomstbonus</span>
+    </div>
+
+    <h3 class="text-2xl md:text-3xl font-black text-white text-center mb-3">Wacht Nog Heel Even!</h3>
+    <p class="text-gray-300 text-center text-sm md:text-base mb-8 leading-relaxed">
+      Twijfel je nog? Bestel vandaag het 12-Maanden pakket en ontvang direct de <strong>IBO Player app licentie gratis</strong>. Of stel je vraag direct aan onze helpdesk!
+    </p>
+    
+    <div class="space-y-3">
+      <a href="/#pricing" id="claim-bonus-btn" class="flex w-full justify-center items-center px-6 py-4 text-base font-extrabold text-white bg-primary hover:bg-primary/90 rounded-xl transition-all shadow-lg shadow-primary/30 hover:scale-[1.02]">
+        Claim Mijn Gratis IBO Player
+      </a>
+      <a href="https://wa.me/18036582620" target="_blank" rel="noopener noreferrer" class="flex w-full justify-center items-center gap-2 px-6 py-3.5 text-base font-bold text-white bg-[#25D366] hover:bg-[#20bd5a] rounded-xl transition-all shadow-lg shadow-[#25D366]/20">
+        <MessageCircle class="w-5 h-5" />
+        <span>Vraag Info via WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const POPUP_STORAGE_KEY = 'pandora_exit_popup_24h';
+  const COOLDOWN_24H = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+  function shouldShow24hPopup() {
+    try {
+      const lastShown = localStorage.getItem(POPUP_STORAGE_KEY);
+      if (!lastShown) return true;
+      const timePassed = Date.now() - parseInt(lastShown, 10);
+      return timePassed > COOLDOWN_24H;
+    } catch {
+      return true;
+    }
+  }
+
+  function mark24hPopupShown() {
+    try {
+      localStorage.setItem(POPUP_STORAGE_KEY, Date.now().toString());
+    } catch (e) {
+      // fallback
+    }
+  }
+
+  let hasTriggeredInSession = false;
+
+  const popup = document.getElementById('exit-intent-popup');
+  const overlay = document.getElementById('exit-overlay');
+  const closeBtn = document.getElementById('close-exit');
+  const modal = document.getElementById('exit-modal');
+  const claimBtn = document.getElementById('claim-bonus-btn');
+
+  function showExitPopup() {
+    if (!popup || !modal || hasTriggeredInSession || !shouldShow24hPopup()) return;
+    
+    hasTriggeredInSession = true;
+    mark24hPopupShown();
+
+    popup.classList.remove('hidden');
+    setTimeout(() => {
+      popup.classList.remove('opacity-0');
+      modal.classList.remove('scale-95');
+      modal.classList.add('scale-100');
+    }, 10);
+  }
+
+  function hideExitPopup() {
+    if (!popup || !modal) return;
+    popup.classList.add('opacity-0');
+    modal.classList.remove('scale-100');
+    modal.classList.add('scale-95');
+    setTimeout(() => {
+      popup.classList.add('hidden');
+    }, 300);
+  }
+
+  // Detect mouse leaving viewport (exit intent)
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY <= 0 && shouldShow24hPopup() && !hasTriggeredInSession) {
+      showExitPopup();
+    }
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', hideExitPopup);
+  if (overlay) overlay.addEventListener('click', hideExitPopup);
+  if (claimBtn) claimBtn.addEventListener('click', hideExitPopup);
+</script>

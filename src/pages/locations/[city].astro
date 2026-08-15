@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StickyHeader from '../../components/StickyHeader.astro';
+import PricingCard from '../../components/PricingCard.astro';
+import Footer from '../../components/Footer.astro';
+import { MapPin } from 'lucide-astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { city: 'amsterdam' } },
+    { params: { city: 'rotterdam' } },
+    { params: { city: 'den-haag' } },
+    { params: { city: 'utrecht' } },
+    { params: { city: 'eindhoven' } }
+  ];
+}
+
+const { city } = Astro.params;
+const formattedCity = city ? city.charAt(0).toUpperCase() + city.slice(1).replace('-', ' ') : 'Nederland';
+
+const title = `IPTV Kopen in ${formattedCity} | Beste Verbinding & Kwaliteit`;
+const description = `Woon je in ${formattedCity}? Geniet van haperingsvrije IPTV met Pandora IPTV. Alle premium zenders, live sport en VOD. Directe activatie in ${formattedCity}.`;
+
+// Schema markup for LocalBusiness / AreaServed
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Pandora IPTV",
+  "areaServed": {
+    "@type": "City",
+    "name": formattedCity
+  },
+  "description": description
+};
+---
+
+<Layout title={title} description={description}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <StickyHeader />
+  
+  <main class="pt-32 pb-24">
+    <div class="container mx-auto px-4 text-center max-w-4xl mb-16">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary mb-6">
+        <MapPin class="w-8 h-8" />
+      </div>
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">De Beste IPTV Provider in <span class="text-primary">{formattedCity}</span></h1>
+      <p class="text-xl text-gray-400">
+        Snelle servers, 4K beeldkwaliteit en directe activatie speciaal geoptimaliseerd voor internetverbindingen in {formattedCity}.
+      </p>
+    </div>
+
+    <!-- Pricing Section specific to local (Starting with High Value) -->
+    <section class="py-12 relative z-10">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto items-stretch">
+          <PricingCard months="12" price="35" popular={true} hasBonus={true} />
+          <PricingCard months="6" price="20" popular={false} />
+          <PricingCard months="3" price="10" popular={false} />
+          <PricingCard months="1" price="5" popular={false} />
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

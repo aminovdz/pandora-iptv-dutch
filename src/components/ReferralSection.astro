@@ -1,0 +1,108 @@
+---
+import { Gift, Share2, Users, Sparkles, ArrowRight, MessageCircle } from 'lucide-astro';
+
+const referralShareText = encodeURIComponent(
+  "Check Pandora IPTV Nederland! Haarscherpe 4K streams zonder hapering. Bestel via deze link en we krijgen allebei 1 maand gratis: https://pandoraiptv-nl.com/referral"
+);
+const shareWhatsappUrl = `https://wa.me/?text=${referralShareText}`;
+---
+
+<section class="py-20 relative z-10 bg-gradient-to-b from-background via-white/[0.02] to-background border-t border-white/10 overflow-hidden">
+  
+  <!-- Subtle ambient glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-primary/15 via-secondary/15 to-transparent blur-[140px] pointer-events-none"></div>
+
+  <div class="container mx-auto px-4 relative z-10 max-w-6xl">
+    
+    <!-- Header Badge -->
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-black uppercase tracking-wider mb-4 shadow-lg shadow-primary/10">
+        <Gift class="w-4 h-4 text-primary" />
+        <span>Exclusief Vriendenprogramma</span>
+      </div>
+      
+      <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight">
+        Deel Pandora IPTV & <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-red-400 to-secondary">Kijk Gratis!</span>
+      </h2>
+      <p class="text-gray-400 text-base md:text-lg mt-3 max-w-2xl mx-auto">
+        Tevreden over onze 4K streaming? Nodig je vrienden of familie uit. Voor elke nieuwe abonnee ontvangen <strong>jullie beiden direct 1 maand gratis kijktijd</strong>.
+      </p>
+    </div>
+
+    <!-- 3-Step Viral Loop Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      
+      <!-- Step 1 -->
+      <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-xl relative group hover:border-primary/40 transition-all">
+        <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <Share2 class="w-7 h-7 text-white" />
+        </div>
+        <span class="text-xs font-mono font-bold text-primary tracking-widest uppercase">STAP 01</span>
+        <h3 class="text-xl font-bold text-white mt-1 mb-3">Deel Jouw Code</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Vraag via WhatsApp jouw unieke referral code aan en deel deze met vrienden, familie of collega's.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-xl relative group hover:border-secondary/40 transition-all">
+        <div class="w-14 h-14 rounded-2xl bg-secondary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <Users class="w-7 h-7 text-secondary" />
+        </div>
+        <span class="text-xs font-mono font-bold text-secondary tracking-widest uppercase">STAP 02</span>
+        <h3 class="text-xl font-bold text-white mt-1 mb-3">Vriend Meldt Zich Aan</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Jouw vriend activeert een abonnement naar keuze en vermeldt jouw unieke referral code bij de bestelling.
+        </p>
+      </div>
+
+      <!-- Step 3 (Highlighted) -->
+      <div class="bg-gradient-to-b from-primary/20 to-background border-2 border-primary/50 p-8 rounded-3xl backdrop-blur-xl relative group shadow-[0_0_35px_rgba(174,28,40,0.2)]">
+        <div class="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center mb-6 shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform">
+          <Gift class="w-7 h-7 text-white" />
+        </div>
+        <span class="text-xs font-mono font-black text-white bg-primary px-2.5 py-0.5 rounded-full uppercase">BELONING</span>
+        <h3 class="text-xl font-bold text-white mt-2 mb-3">Beide 1 Maand Gratis!</h3>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Wij voegen automatisch <strong>1 gratis maand</strong> toe aan jouw account én aan het account van je vriend. Zonder limiet!
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Referral Action Card -->
+    <div class="bg-white/[0.04] border border-white/15 p-8 md:p-10 rounded-3xl backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+      <div class="text-left max-w-xl">
+        <div class="flex items-center gap-2 text-yellow-400 text-xs font-bold uppercase mb-2">
+          <Sparkles class="w-4 h-4" />
+          <span>Geen Limiet Op Aantal Vrienden</span>
+        </div>
+        <h3 class="text-2xl md:text-3xl font-bold text-white">Nodig 12 vrienden uit = 1 Jaar Gratis Kijken!</h3>
+        <p class="text-gray-400 text-sm mt-2">
+          Deel direct via WhatsApp of bekijk alle details van het programma op onze speciale referral pagina.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto shrink-0">
+        <a 
+          href={shareWhatsappUrl} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto px-6 py-3.5 bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold rounded-xl shadow-lg shadow-[#25D366]/20 transition-all flex items-center justify-center gap-2 text-sm md:text-base hover:scale-105"
+        >
+          <MessageCircle class="w-5 h-5" />
+          <span>Deel via WhatsApp</span>
+        </a>
+        
+        <a 
+          href="/referral" 
+          class="w-full sm:w-auto px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl border border-white/15 transition-all flex items-center justify-center gap-2 text-sm md:text-base"
+        >
+          <span>Lees Voorwaarden</span>
+          <ArrowRight class="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

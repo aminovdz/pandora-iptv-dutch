@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StickyHeader from '../../components/StickyHeader.astro';
+import Footer from '../../components/Footer.astro';
+import { Check, X } from 'lucide-astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { competitor: 'ziggo' } },
+    { params: { competitor: 'kpn' } },
+    { params: { competitor: 'netflix' } },
+    { params: { competitor: 'andere-iptv' } }
+  ];
+}
+
+const { competitor } = Astro.params;
+const formattedCompetitor = competitor ? competitor.charAt(0).toUpperCase() + competitor.slice(1).replace('-', ' ') : 'Andere Aanbieders';
+
+const title = `Pandora IPTV vs ${formattedCompetitor} | Welke is beter in 2026?`;
+const description = `Twijfel je tussen Pandora IPTV en ${formattedCompetitor}? Bekijk onze eerlijke vergelijking op basis van stabiliteit, prijs, en zenderaanbod.`;
+---
+
+<Layout title={title} description={description}>
+  <StickyHeader />
+  
+  <main class="pt-32 pb-24">
+    <div class="container mx-auto px-4 max-w-5xl text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Pandora IPTV vs <span class="text-gray-400">{formattedCompetitor}</span></h1>
+      <p class="text-xl text-gray-400 mb-16 max-w-2xl mx-auto">
+        Waarom overstappen naar Pandora IPTV de beste keuze is. Vergelijk de functies en oordeel zelf.
+      </p>
+
+      <div class="overflow-x-auto bg-white/5 border border-white/10 rounded-2xl">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-white/5">
+              <th class="p-6 text-white font-bold text-xl border-b border-white/10">Functie</th>
+              <th class="p-6 text-primary font-bold text-xl border-b border-white/10 bg-primary/10">Pandora IPTV</th>
+              <th class="p-6 text-gray-400 font-bold text-xl border-b border-white/10">{formattedCompetitor}</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-300">
+            <tr>
+              <td class="p-6 border-b border-white/5">4K & FHD Kwaliteit</td>
+              <td class="p-6 border-b border-white/5 bg-primary/5 text-white font-medium"><Check class="w-6 h-6 text-[#25D366] inline mr-2"/> Ja</td>
+              <td class="p-6 border-b border-white/5"><X class="w-6 h-6 text-red-500 inline mr-2"/> Vaak Buffering</td>
+            </tr>
+            <tr>
+              <td class="p-6 border-b border-white/5">Anti-Freeze Servers</td>
+              <td class="p-6 border-b border-white/5 bg-primary/5 text-white font-medium"><Check class="w-6 h-6 text-[#25D366] inline mr-2"/> 100% Inbegrepen</td>
+              <td class="p-6 border-b border-white/5"><X class="w-6 h-6 text-red-500 inline mr-2"/> Nee</td>
+            </tr>
+            <tr>
+              <td class="p-6 border-b border-white/5">Klantenservice</td>
+              <td class="p-6 border-b border-white/5 bg-primary/5 text-white font-medium">24/7 WhatsApp</td>
+              <td class="p-6 border-b border-white/5">Trage E-mail</td>
+            </tr>
+            <tr>
+              <td class="p-6 border-b border-white/5">Prijs per Jaar</td>
+              <td class="p-6 border-b border-white/5 bg-primary/5 text-primary font-bold">€35 (Inclusief App)</td>
+              <td class="p-6 border-b border-white/5 text-gray-400">Vaak €50+</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="mt-12">
+        <a href="/#pricing" class="inline-flex px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl shadow-lg transition-colors">
+          Probeer Pandora IPTV Vandaag
+        </a>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

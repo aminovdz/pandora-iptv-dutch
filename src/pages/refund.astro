@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import { ShieldCheck, Clock } from 'lucide-astro';
+---
+
+<Layout title="24-Uurs Restitutiebeleid | Pandora IPTV" description="Bekijk het 24-uurs restitutiebeleid van Pandora IPTV. Eerlijke voorwaarden en directe ondersteuning.">
+  <StickyHeader />
+  
+  <main class="pt-32 pb-24">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary border border-primary/30 mb-6">
+        <Clock class="w-4 h-4" />
+        <span class="text-sm font-bold uppercase tracking-wider">24 Uur Garantie</span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-8">Restitutiebeleid (24H Garantie)</h1>
+      
+      <div class="prose prose-invert prose-lg max-w-none text-gray-300 space-y-6">
+        <p class="text-lg leading-relaxed">
+          Bij Pandora IPTV streven we naar de allerhoogste kwaliteit en streamingstabiliteit. Omdat wij digitale streamingtoegang leveren met directe serveractivatie, hanteren wij een strikt en transparant <strong>24-uurs restitutiebeleid</strong>.
+        </p>
+        
+        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl my-6">
+          <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+            <ShieldCheck class="w-6 h-6 text-green-400" />
+            1. 24-Uurs Tevredenheidsgarantie
+          </h2>
+          <p>
+            Wij bieden een <strong>24-uurs geld-terug-garantie (24H)</strong> voor nieuwe klanten. Mocht de service na activatie op jouw apparaat niet naar behoren functioneren en ons support team het technische probleem niet binnen 24 uur kunnen verhelpen, dan heb je recht op volledige restitutie van je aankoopbedrag.
+          </p>
+        </div>
+        
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">2. Voorwaarden voor restitutie</h2>
+        <p>U komt in aanmerking voor een 24H terugbetaling indien:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Het restitutieverzoek binnen <strong>24 uur</strong> na het moment van bestelling en serveractivatie schriftelijk wordt ingediend.</li>
+          <li>U technische storingen ervaart die direct aantoonbaar aan onze servers te wijten zijn en niet door onze 24/7 helpdesk opgelost kunnen worden.</li>
+          <li>Er geen sprake is van misbruik van de inloggegevens (zoals gelijktijdig gebruik op meerdere ongeautoriseerde IP-adressen).</li>
+        </ul>
+        
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">3. Uitzonderingen na de 24-uurs periode</h2>
+        <p>Restituties worden NIET verleend indien:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>De 24-uurs termijn na aankoop is verstreken.</li>
+          <li>Het probleem te wijten is aan een ontoereikende lokale internetverbinding van de gebruiker (minimaal 25 Mbps stabiel breedband aanbevolen voor 4K).</li>
+          <li>De gebruiker weigert om de door onze support aangeraden stabiele spelers (zoals IBO Player of IPTV Smarters Pro) te configureren.</li>
+        </ul>
+        
+        <h2 class="text-2xl font-bold text-white mt-8 mb-4">4. Hoe vraag je een 24H restitutie aan?</h2>
+        <p>
+          Neem binnen 24 uur na aanschaf direct contact op met onze WhatsApp helpdesk (+1 803-658-2620) of stuur een e-mail naar <a href="mailto:support@castvera.com" class="text-primary hover:underline">support@castvera.com</a> met je bestelreferentie en gebruikersnaam. Goedgekeurde terugbetalingen worden binnen 1 tot 3 werkdagen teruggestort via de oorspronkelijke betaalmethode.
+        </p>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

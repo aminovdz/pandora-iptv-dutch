@@ -1,0 +1,86 @@
+---
+import { Tv, Smartphone, Monitor, Laptop } from 'lucide-astro';
+---
+
+<section class="py-24 relative z-10 bg-white/[0.02] border-y border-white/10">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      
+      <!-- Left text info -->
+      <div class="lg:w-1/2">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-gray-300 uppercase tracking-wider mb-4">
+          <span>Multi-Device Compatibiliteit</span>
+        </div>
+        <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight mb-6">
+          Kijk op <span class="text-primary">Al Jouw Apparaten</span>
+        </h2>
+        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+          Of je nu thuis op de bank zit met je 4K Smart TV of onderweg bent met je smartphone of tablet: jouw Pandora IPTV abonnement streamt soepel en direct op al jouw apparaten.
+        </p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div class="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/5">
+            <Tv class="text-primary w-6 h-6 shrink-0" />
+            <div>
+              <span class="text-white font-bold block text-sm">Smart TV</span>
+              <span class="text-gray-400 text-xs">Samsung, LG webOS, Sony</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/5">
+            <Monitor class="text-secondary w-6 h-6 shrink-0" />
+            <div>
+              <span class="text-white font-bold block text-sm">Android TV / Box</span>
+              <span class="text-gray-400 text-xs">Nvidia Shield, Xiaomi Mi Box</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/5">
+            <Smartphone class="text-green-400 w-6 h-6 shrink-0" />
+            <div>
+              <span class="text-white font-bold block text-sm">Apple TV & iOS</span>
+              <span class="text-gray-400 text-xs">iPhone, iPad, tvOS</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/5">
+            <Laptop class="text-yellow-400 w-6 h-6 shrink-0" />
+            <div>
+              <span class="text-white font-bold block text-sm">PC & Mac</span>
+              <span class="text-gray-400 text-xs">Windows, macOS, VLC</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommended Apps badges -->
+        <div class="flex flex-wrap items-center gap-2 pt-4 border-t border-white/10">
+          <span class="text-xs text-gray-400 font-semibold mr-2">Ondersteunde Spelers:</span>
+          <span class="px-2.5 py-1 bg-white/10 rounded-lg text-xs font-bold text-white">IBO Player</span>
+          <span class="px-2.5 py-1 bg-white/10 rounded-lg text-xs font-bold text-white">IPTV Smarters Pro</span>
+          <span class="px-2.5 py-1 bg-white/10 rounded-lg text-xs font-bold text-white">TiviMate</span>
+          <span class="px-2.5 py-1 bg-white/10 rounded-lg text-xs font-bold text-white">XCIPTV</span>
+        </div>
+      </div>
+      
+      <!-- Right Image Showcase -->
+      <div class="lg:w-1/2 relative group">
+        <div class="absolute inset-0 bg-primary/20 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="relative rounded-3xl overflow-hidden border border-white/15 bg-white/5 p-2 backdrop-blur-xl shadow-2xl">
+          <img 
+            src="/images/multidevice-streaming.jpg" 
+            alt="pandora iptv smart tv installatie op alle apparaten" 
+            class="w-full h-auto object-cover rounded-2xl transition-transform duration-500 group-hover:scale-[1.02]"
+            loading="lazy"
+            width="800"
+            height="450"
+          />
+          <div class="p-4 flex items-center justify-between text-xs text-gray-300">
+            <span class="font-bold text-white flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-green-500"></span>
+              Gesynchroniseerd op alle schermen
+            </span>
+            <span class="text-primary font-bold">100% Plug & Play</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

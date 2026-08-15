@@ -1,0 +1,6 @@
+name = "pandora-iptv-nl"
+compatibility_date = "2024-04-05"
+pages_build_output_dir = "./dist"
+
+[env.production]
+# Cloudflare production variables

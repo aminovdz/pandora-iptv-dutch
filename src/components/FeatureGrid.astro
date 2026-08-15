@@ -1,0 +1,60 @@
+---
+import { Tv, Zap, MonitorPlay, Shield, Headphones, Globe } from 'lucide-astro';
+
+const features = [
+  {
+    title: "Haarscherpe 4K/8K Kwaliteit",
+    description: "Geen blokkerig beeld meer. Pandora IPTV biedt de hoogste beeldkwaliteit voor al je favoriete zenders.",
+    icon: Tv,
+  },
+  {
+    title: "Anti-Buffer Technologie",
+    description: "Onze supersnelle servers zorgen ervoor dat je streams nooit vasthangen, zelfs niet tijdens topwedstrijden.",
+    icon: Zap,
+  },
+  {
+    title: "Werkt op Alle Apparaten",
+    description: "Kijk op je Smart TV, Android box, Apple TV, smartphone of tablet. Overal en altijd bereikbaar.",
+    icon: MonitorPlay,
+  },
+  {
+    title: "Privacy & Veiligheid",
+    description: "We beschermen je gegevens. Volledig anoniem streamen met onze veilige en versleutelde servers.",
+    icon: Shield,
+  },
+  {
+    title: "24/7 Premium Support",
+    description: "Problemen? Ons support team staat 24 uur per dag klaar via WhatsApp en Telegram.",
+    icon: Headphones,
+  },
+  {
+    title: "Wereldwijd Aanbod",
+    description: "Niet alleen IPTV Nederland. Toegang tot een gigantisch aanbod aan internationale zenders en VOD.",
+    icon: Globe,
+  }
+];
+---
+
+<section id="features" class="py-24 relative z-10 bg-background">
+  <div class="container mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Waarom Kiezen Voor <span class="text-primary">Pandora IPTV?</span></h2>
+      <p class="text-gray-400 text-lg">Wij leveren de meest stabiele en uitgebreide kijkervaring op de markt. Ontdek waarom duizenden klanten de overstap maken.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map((feature) => {
+        const Icon = feature.icon;
+        return (
+          <div class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors group">
+            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Icon class="w-7 h-7 text-primary" />
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">{feature.title}</h3>
+            <p class="text-gray-400 leading-relaxed">{feature.description}</p>
+          </div>
+        )
+      })}
+    </div>
+  </div>
+</section>

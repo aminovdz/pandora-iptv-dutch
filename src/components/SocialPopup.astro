@@ -1,0 +1,55 @@
+---
+import { CheckCircle2 } from 'lucide-astro';
+---
+
+<div id="social-proof-popup" class="fixed bottom-24 left-4 z-40 bg-background/95 backdrop-blur-lg border border-white/10 p-4 rounded-xl shadow-2xl flex items-center gap-4 transform translate-y-32 opacity-0 transition-all duration-500 max-w-sm pointer-events-none">
+  <div class="bg-green-500/20 p-2 rounded-full shrink-0">
+    <CheckCircle2 class="w-6 h-6 text-green-500" />
+  </div>
+  <div>
+    <p class="text-sm text-gray-300 leading-tight">
+      <strong class="text-white" id="sp-name">Jan uit Amsterdam</strong> heeft zojuist een
+    </p>
+    <p class="text-sm font-bold text-primary mt-0.5" id="sp-product">12 Maanden Abonnement</p>
+    <p class="text-xs text-gray-500 mt-1" id="sp-time">Zojuist aangeschaft</p>
+  </div>
+</div>
+
+<script>
+  const names = ['Mike', 'Sanne', 'Peter', 'Thomas', 'Lisa', 'Johan', 'Dennis', 'Kevin'];
+  const cities = ['Amsterdam', 'Rotterdam', 'Den Haag', 'Utrecht', 'Eindhoven', 'Groningen', 'Almere'];
+  const products = ['12 Maanden + IBO Bonus', '6 Maanden Abonnement', '12 Maanden Abonnement', '3 Maanden Abonnement'];
+  
+  const popup = document.getElementById('social-proof-popup');
+  const spName = document.getElementById('sp-name');
+  const spProduct = document.getElementById('sp-product');
+  const spTime = document.getElementById('sp-time');
+
+  function showSocialProof() {
+    if(!popup || !spName || !spProduct || !spTime) return;
+
+    // Randomize data
+    const rName = names[Math.floor(Math.random() * names.length)];
+    const rCity = cities[Math.floor(Math.random() * cities.length)];
+    const rProduct = products[Math.floor(Math.random() * products.length)];
+    const rTime = Math.floor(Math.random() * 50) + 2; // 2 to 51 mins ago
+
+    spName.innerText = `${rName} uit ${rCity}`;
+    spProduct.innerText = rProduct;
+    spTime.innerText = `${rTime} minuten geleden aangeschaft`;
+
+    // Show
+    popup.classList.remove('translate-y-32', 'opacity-0');
+    
+    // Hide after 5 seconds
+    setTimeout(() => {
+      popup.classList.add('translate-y-32', 'opacity-0');
+    }, 5000);
+  }
+
+  // Initial delay, then loop
+  setTimeout(() => {
+    showSocialProof();
+    setInterval(showSocialProof, 25000); // show every 25 seconds
+  }, 10000); // start after 10 seconds
+</script>

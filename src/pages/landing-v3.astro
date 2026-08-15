@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Hero from '../components/Hero.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import PricingCard from '../components/PricingCard.astro';
+import ReferralSection from '../components/ReferralSection.astro';
+import CitiesList from '../components/CitiesList.astro';
+import UserReviewsSection from '../components/UserReviewsSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import ExitPopup from '../components/ExitPopup.astro';
+
+// SEO details - Optimized for Local/Fast Setup
+const title = "Direct IPTV Kijken in Nederland | Binnen 5 Min Setup | Pandora";
+const description = "Bestel IPTV Pandora en kijk binnen 5 minuten op je Smart TV, telefoon of PC. Beschikbaar overal in Nederland. Test het nu met onze supersnelle activatie.";
+---
+
+<Layout title={title} description={description}>
+  <StickyHeader />
+  
+  <main>
+    <Hero />
+    
+    <!-- Trust Banner -->
+    <div class="bg-primary/10 border-y border-primary/20 py-4 relative z-10">
+      <div class="container mx-auto px-4">
+        <p class="text-center text-white font-medium">⚡ Directe activatie via WhatsApp. <span class="text-primary font-bold">100% Antivries Technologie</span> ingebouwd in onze Nederlandse servers.</p>
+      </div>
+    </div>
+
+    <ProcessSteps />
+    
+    <!-- Pricing Section (Positioned Directly Above Referral) -->
+    <section id="pricing" class="py-24 relative z-10 bg-background/50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Sluit je aan bij tevreden kijkers</h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">Snelle activatie. Geen contracten. Direct kijken.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto items-stretch">
+          <PricingCard months="12" price="35" popular={true} hasBonus={true} />
+          <PricingCard months="6" price="20" popular={false} />
+          <PricingCard months="3" price="10" popular={false} />
+          <PricingCard months="1" price="5" popular={false} />
+        </div>
+      </div>
+    </section>
+
+    <!-- Referral Section Directly Under Pricing -->
+    <ReferralSection />
+
+    <CitiesList />
+    <UserReviewsSection />
+    <CTASection />
+  </main>
+  
+  <Footer />
+  <FloatingWhatsApp />
+  <ExitPopup />
+</Layout>

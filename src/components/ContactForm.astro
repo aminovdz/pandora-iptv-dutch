@@ -1,0 +1,106 @@
+---
+import { Mail, MessageCircle, Send } from 'lucide-astro';
+---
+
+<section class="py-24 relative z-10 bg-background/50">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-24">
+      
+      <!-- Contact Info -->
+      <div class="lg:w-1/2">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Neem Contact <span class="text-primary">Met Ons Op</span></h2>
+        <p class="text-gray-400 text-lg mb-12">
+          Heb je een vraag over onze diensten, wil je een proefaccount aanvragen of heb je technische ondersteuning nodig? Ons support team staat 24/7 voor je klaar.
+        </p>
+
+        <div class="space-y-8">
+          <div class="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#25D366]/50 transition-colors group">
+            <div class="bg-[#25D366]/20 p-3 rounded-xl">
+              <MessageCircle class="w-6 h-6 text-[#25D366]" />
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-lg mb-1">WhatsApp Support</h3>
+              <p class="text-gray-400 text-sm mb-3">Snelste reactietijd. Dag en nacht bereikbaar.</p>
+              <div class="space-y-2">
+                <a href="https://wa.me/18036582620" class="block text-[#25D366] hover:text-white font-medium transition-colors">Direct chatten (+1 803-658-2620) &rarr;</a>
+                <a href="https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v" target="_blank" class="block text-gray-300 hover:text-white text-sm transition-colors">Volg ons WhatsApp Kanaal &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#0088cc]/50 transition-colors group">
+            <div class="bg-[#0088cc]/20 p-3 rounded-xl">
+              <Send class="w-6 h-6 text-[#0088cc]" />
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-lg mb-1">Telegram</h3>
+              <p class="text-gray-400 text-sm mb-3">Word lid van onze community voor acties en updates.</p>
+              <a href="https://t.me/castvera_com" target="_blank" class="block text-[#0088cc] hover:text-white font-medium transition-colors">Naar Telegram Kanaal &rarr;</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors group">
+            <div class="bg-primary/20 p-3 rounded-xl">
+              <Mail class="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-lg mb-1">E-mail</h3>
+              <p class="text-gray-400 text-sm mb-3">Voor administratieve of zakelijke vragen.</p>
+              <div class="space-y-1">
+                <a href="mailto:contact@pandoraiptv-nl.com" class="block text-gray-300 hover:text-white text-sm transition-colors">contact@pandoraiptv-nl.com</a>
+                <a href="mailto:support@castvera.com" class="block text-gray-300 hover:text-white text-sm transition-colors">support@castvera.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form (UI only as per static generation) -->
+      <div class="lg:w-1/2">
+        <div class="bg-white/5 border border-white/10 p-8 md:p-10 rounded-3xl backdrop-blur-sm">
+          <h3 class="text-2xl font-bold text-white mb-6">Stuur een bericht</h3>
+          <form id="contact-form" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label for="name" class="text-sm font-medium text-gray-300">Naam</label>
+                <input type="text" id="name" required class="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Jouw naam">
+              </div>
+              <div class="space-y-2">
+                <label for="email" class="text-sm font-medium text-gray-300">E-mailadres</label>
+                <input type="email" id="email" required class="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="jouw@email.com">
+              </div>
+            </div>
+            
+            <div class="space-y-2">
+              <label for="subject" class="text-sm font-medium text-gray-300">Onderwerp</label>
+              <select id="subject" class="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none">
+                <option value="general">Algemene vraag</option>
+                <option value="trial">Proefaccount aanvragen</option>
+                <option value="support">Technische ondersteuning</option>
+                <option value="billing">Facturatie</option>
+              </select>
+            </div>
+
+            <div class="space-y-2">
+              <label for="message" class="text-sm font-medium text-gray-300">Bericht</label>
+              <textarea id="message" rows="5" required class="w-full bg-background/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none" placeholder="Hoe kunnen we je helpen?"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 text-base font-bold text-white bg-primary hover:bg-primary/90 rounded-xl shadow-lg transition-all">
+              Bericht Verzenden
+            </button>
+          </form>
+
+          <script>
+            const form = document.getElementById('contact-form');
+            form?.addEventListener('submit', (e) => {
+              e.preventDefault();
+              alert('Bedankt voor je bericht! We nemen zo snel mogelijk contact op.');
+            });
+          </script>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

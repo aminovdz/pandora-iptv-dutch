@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import { Share2, Users, Gift, ArrowRight } from 'lucide-astro';
+---
+
+<Layout title="Referral Programma | Pandora IPTV" description="Nodig vrienden uit voor Pandora IPTV en verdien gratis maanden kijken! Ontdek hoe ons referral programma werkt.">
+  <StickyHeader />
+  
+  <main class="pt-32 pb-24">
+    <div class="container mx-auto px-4 max-w-5xl text-center">
+      
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary border border-primary/30 mb-8">
+        <Gift class="w-4 h-4" />
+        <span class="text-sm font-bold uppercase tracking-wider">Verdien Gratis Kijktijd</span>
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Deel Pandora IPTV & <br/><span class="text-primary">Kijk Gratis!</span></h1>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-16">
+        Ben je blij met onze service? Vertel het door! Voor elke vriend die via jou een abonnement neemt, krijgen jullie allebei een beloning.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div class="bg-white/5 border border-white/10 p-8 rounded-2xl">
+          <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Share2 class="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">1. Deel je Link</h3>
+          <p class="text-gray-400">Neem contact met ons op via WhatsApp om je unieke referral link of code te ontvangen.</p>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 p-8 rounded-2xl relative">
+          <!-- Connector line -->
+          <div class="hidden md:block absolute top-16 -left-4 w-8 h-0.5 bg-white/10"></div>
+          <div class="hidden md:block absolute top-16 -right-4 w-8 h-0.5 bg-white/10"></div>
+          
+          <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Users class="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">2. Vriend meldt zich aan</h3>
+          <p class="text-gray-400">Je vriend koopt een abonnement van minimaal 3 maanden via jouw link.</p>
+        </div>
+
+        <div class="bg-primary/20 border border-primary/50 p-8 rounded-2xl shadow-[0_0_30px_rgba(174,28,40,0.2)]">
+          <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <Gift class="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">3. Ontvang je Beloning</h3>
+          <p class="text-gray-300">Jij krijgt <strong class="text-white">1 maand gratis</strong> toegevoegd aan je abonnement. Je vriend krijgt ook 1 maand extra!</p>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-r from-secondary/40 to-primary/20 border border-white/10 p-10 rounded-3xl max-w-3xl mx-auto backdrop-blur-sm">
+        <h2 class="text-2xl font-bold text-white mb-4">Start met delen</h2>
+        <p class="text-gray-300 mb-8">Stuur ons een berichtje op WhatsApp en we maken direct een persoonlijke code voor je aan.</p>
+        <a href="https://wa.me/18036582620" class="inline-flex items-center gap-2 px-8 py-4 text-lg font-bold text-white bg-[#25D366] hover:bg-[#20bd5a] rounded-xl shadow-lg transition-colors">
+          Vraag Code Aan via WhatsApp <ArrowRight class="w-5 h-5" />
+        </a>
+      </div>
+      
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

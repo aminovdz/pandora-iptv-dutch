@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StickyHeader from '../../components/StickyHeader.astro';
+import Footer from '../../components/Footer.astro';
+import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
+import { getCollection } from 'astro:content';
+import { BookOpen, ArrowRight, Clock } from 'lucide-astro';
+
+// Fetch all guides from the content collection
+const guides = await getCollection('guides');
+---
+
+<Layout title="IPTV Handleidingen & Gidsen | Pandora IPTV Nederland" description="Stap-voor-stap installatiehandleidingen voor het instellen van Pandora IPTV op Smart TV, Android Box, Apple TV, iPhone en PC.">
+  <StickyHeader />
+  
+  <main class="pt-32 pb-24 min-h-[75vh] relative overflow-hidden">
+    
+    <!-- Ambient Background Glow -->
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/15 blur-[150px] pointer-events-none"></div>
+
+    <div class="container mx-auto px-4 max-w-6xl relative z-10">
+      
+      <!-- Page Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider mb-4">
+          <BookOpen class="w-3.5 h-3.5" />
+          <span>Kennisbank & Handleidingen</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6">
+          Installatie <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-red-400 to-secondary">Handleidingen</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
+          Selecteer jouw apparaat voor een duidelijke stap-voor-stap uitleg om Pandora IPTV binnen 5 minuten werkend te krijgen.
+        </p>
+      </div>
+
+      <!-- Guides Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {guides.length > 0 ? guides.map((guide: any) => (
+          <article class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-primary/50 transition-all group flex flex-col justify-between hover:-translate-y-1.5 shadow-xl">
+            <div>
+              {guide.data.heroImage && (
+                <div class="relative overflow-hidden aspect-video">
+                  <img 
+                    src={guide.data.heroImage} 
+                    alt={guide.data.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-bold text-white flex items-center gap-1 border border-white/10">
+                    <Clock class="w-3 h-3 text-primary" />
+                    <span>~4 min leestijd</span>
+                  </div>
+                </div>
+              )}
+              
+              <div class="p-6 md:p-8">
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors leading-snug">
+                  <a href={`/guides/${guide.slug}`}>
+                    {guide.data.title}
+                  </a>
+                </h2>
+                <p class="text-gray-400 text-sm leading-relaxed line-clamp-3 mb-6">
+                  {guide.data.description}
+                </p>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6 md:px-8 md:pb-8 pt-0">
+              <a 
+                href={`/guides/${guide.slug}`} 
+                class="inline-flex items-center gap-2 text-primary font-bold text-sm group-hover:text-white transition-colors"
+              >
+                <span>Bekijk Volledige Handleiding</span>
+                <ArrowRight class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </article>
+        )) : (
+          <div class="col-span-full text-center py-16 bg-white/5 rounded-3xl border border-white/10">
+            <p class="text-gray-400 text-lg">Er zijn momenteel geen handleidingen gepubliceerd. Kom snel terug!</p>
+          </div>
+        )}
+      </div>
+
+    </div>
+  </main>
+  
+  <Footer />
+  <FloatingWhatsApp />
+</Layout>
