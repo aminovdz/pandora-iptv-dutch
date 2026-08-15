@@ -5,6 +5,20 @@ import Footer from '../../components/Footer.astro';
 import { Check, X } from 'lucide-astro';
 
 const { competitor } = Astro.params;
+
+export function getStaticPaths() {
+  const competitors = [
+    'iptv-koning',
+    'iptv-totaal',
+    'koop-iptv',
+    'beste-iptv',
+    'iptv-nederland'
+  ];
+
+  return competitors.map(competitor => ({
+    params: { competitor }
+  }));
+}
 const formattedCompetitor = competitor ? competitor.charAt(0).toUpperCase() + competitor.slice(1).replace('-', ' ') : 'Andere Aanbieders';
 
 const title = `Pandora IPTV vs ${formattedCompetitor} | Welke is beter in 2026?`;

@@ -6,6 +6,25 @@ import Footer from '../../components/Footer.astro';
 import { MapPin } from 'lucide-astro';
 
 const { city } = Astro.params;
+
+export function getStaticPaths() {
+  const cities = [
+    'amsterdam',
+    'rotterdam',
+    'den-haag',
+    'utrecht',
+    'eindhoven',
+    'groningen',
+    'tilburg',
+    'almere',
+    'breda',
+    'nijmegen'
+  ];
+
+  return cities.map(city => ({
+    params: { city }
+  }));
+}
 const formattedCity = city ? city.charAt(0).toUpperCase() + city.slice(1).replace('-', ' ') : 'Nederland';
 
 const title = `IPTV Kopen in ${formattedCity} | Beste Verbinding & Kwaliteit`;
